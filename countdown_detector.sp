@@ -76,7 +76,7 @@ CountDown()
 		timers = INVALID_HANDLE;
 	}
 	timers = CreateTimer(1.0, Repeater, _, TIMER_REPEAT);
-	PrintCenterTextAll("Doors will open in %i seconds", number);
+	PrintHintTextToAll("<font size='30' color='#2EFE2E'>Prepare to go in %i seconds</font>", number);
 }
 
 public Action Repeater(Handle timer)
@@ -84,7 +84,7 @@ public Action Repeater(Handle timer)
 	number--;
 	if(number <= 0)
 	{
-		PrintCenterTextAll("DOORS OPENED! GO GO GO!");	
+		PrintHintTextToAll("<font size='30' color='#2EFE2E'>LETS GO! GO GO GO!</font>");	
 		if(timers != INVALID_HANDLE)
 		{
 			KillTimer(timers);
@@ -92,5 +92,5 @@ public Action Repeater(Handle timer)
 		}
 		return;
 	}
-	PrintCenterTextAll("Doors will open in %i seconds", number);
+	PrintHintTextToAll("<font size='30' color='#2EFE2E'>Prepare to go in %i seconds</font>", number);
 }

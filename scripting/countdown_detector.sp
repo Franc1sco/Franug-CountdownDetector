@@ -2,7 +2,7 @@
 #include <sourcemod>
 #include <sdktools>
  
-#define DATA "1.0"
+#define DATA "1.1"
 
 int number;
 Handle timers;
@@ -18,6 +18,8 @@ public Plugin:myinfo =
  
 public OnPluginStart()
 {
+	LoadTranslations("countdown_detector.phrases");
+	
 	CreateConVar("sm_countdowndetector_version", DATA, "", FCVAR_PLUGIN|FCVAR_SPONLY|FCVAR_REPLICATED|FCVAR_NOTIFY);
 	AddCommandListener(SayConsole, "say");
 	
@@ -76,7 +78,7 @@ CountDown()
 		timers = INVALID_HANDLE;
 	}
 	timers = CreateTimer(1.0, Repeater, _, TIMER_REPEAT);
-	PrintHintTextToAll("<font size='30' color='#2EFE2E'>Prepare to go in %i seconds</font>", number);
+	PrintHintTextToAll("%t", "opening", number);
 }
 
 public Action Repeater(Handle timer)
@@ -84,7 +86,7 @@ public Action Repeater(Handle timer)
 	number--;
 	if(number <= 0)
 	{
-		PrintHintTextToAll("<font size='30' color='#2EFE2E'>LETS GO! GO GO GO!</font>");	
+		PrintHintTextToAll("%t", "opened");	
 		if(timers != INVALID_HANDLE)
 		{
 			KillTimer(timers);
@@ -92,5 +94,5 @@ public Action Repeater(Handle timer)
 		}
 		return;
 	}
-	PrintHintTextToAll("<font size='30' color='#2EFE2E'>Prepare to go in %i seconds</font>", number);
+	PrintHintTextToAll("%t", "opening", number);
 }

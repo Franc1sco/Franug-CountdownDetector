@@ -1,0 +1,14 @@
+﻿"Phrases"
+{
+	"opening"
+	{
+		"#format"	"{1:i}"
+		"en"			"<font size='30' color='#2EFE2E'>Prepare to go in {1} seconds</font>"
+		"es"			"<font size='30' color='#2EFE2E'>Preparate a ir en {1} segundos</font>"
+	}
+	"opened"
+	{
+		"en"			"<font size='30' color='#2EFE2E'>LETS GO! GO GO GO!</font>"
+		"es"			"<font size='30' color='#2EFE2E'>VAMONOS! VAMOS VAMOS VAMOS!</font>"
+	}
+}

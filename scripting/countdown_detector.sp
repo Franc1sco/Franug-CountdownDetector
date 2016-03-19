@@ -2,7 +2,7 @@
 #include <sourcemod>
 #include <sdktools>
  
-#define DATA "1.1"
+#define DATA "1.1.1"
 
 int number;
 Handle timers;
@@ -47,17 +47,17 @@ public Action:SayConsole(client,const char[] command, args)
 	
 	for (new i=1; i < strlen(buffer); i++)
 	{    
-        if (IsCharNumeric(buffer[i]))
-        {
-        	if (!numeric) Format(buffer2, 255, "");
-        	numeric = true;
-        	Format(buffer2, 255, "%s%c",buffer2, buffer[i]);
-        	
-        }
-        else if (IsCharSpace(buffer[i])) continue;
-        else if(numeric)
+		if (IsCharNumeric(buffer[i]))
 		{
-			if(buffer[i] == 's' && (strlen(buffer) <= i+1 || buffer[i+1] == 'e' || IsCharSpace(buffer[i+1])))
+			if (!numeric) Format(buffer2, 255, "");
+			numeric = true;
+			Format(buffer2, 255, "%s%c",buffer2, buffer[i]);
+        	
+		}
+		else if (IsCharSpace(buffer[i])) continue;
+		else if(numeric)
+		{
+			if((buffer[i] == 's' || buffer[i] == 'S') && (strlen(buffer) <= i+1 || buffer[i+1] == 'e' || buffer[i+1] == 'E' || IsCharSpace(buffer[i+1])))
 			{
 				number = StringToInt(buffer2);
 				CountDown();

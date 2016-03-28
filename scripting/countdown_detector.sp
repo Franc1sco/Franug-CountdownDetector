@@ -2,7 +2,7 @@
 #include <sourcemod>
 #include <sdktools>
  
-#define DATA "1.1.1"
+#define DATA "1.1.2"
 
 int number;
 Handle timers;
@@ -63,7 +63,7 @@ public Action:SayConsole(client,const char[] command, args)
 				CountDown();
 				return;
 			}
-			
+			numeric = false;
 		}   
 		else numeric = false;
 
